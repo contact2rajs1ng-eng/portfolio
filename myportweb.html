@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raj Singh – Graphic Designer & Video Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --blue: #1a56db;
+    --sky: #4fa3e0;
+    --blush: #f9d6d6;
+    --cream: #fdf6ee;
+    --dark: #0a0f1e;
+    --white: #ffffff;
+    --accent: #ff5e5e;
+    --soft: #e8f0fb;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #0a1628 0%, #0d2048 50%, #0a1628 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 60px 20px 40px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 30%, rgba(74,163,224,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 80% 70%, rgba(255,94,94,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* floating birds */
+  .bird {
+    position: absolute;
+    width: 22px;
+    height: 8px;
+    border-top: 2px solid rgba(255,255,255,0.35);
+    border-radius: 50% 50% 0 0;
+    animation: fly 8s ease-in-out infinite;
+  }
+  .bird::after {
+    content: '';
+    position: absolute;
+    left: 11px; top: -2px;
+    width: 11px; height: 8px;
+    border-top: 2px solid rgba(255,255,255,0.35);
+    border-radius: 50% 50% 0 0;
+  }
+  .bird:nth-child(1) { top: 12%; left: 15%; animation-delay: 0s; }
+  .bird:nth-child(2) { top: 8%; left: 40%; animation-delay: 1.5s; transform: scale(0.7); }
+  .bird:nth-child(3) { top: 18%; left: 65%; animation-delay: 3s; transform: scale(0.5); }
+  .bird:nth-child(4) { top: 10%; right: 20%; animation-delay: 2s; transform: scale(0.8); }
+
+  @keyframes fly {
+    0%, 100% { transform: translateY(0) scaleX(1); }
+    50% { transform: translateY(-12px) scaleX(1.05); }
+  }
+
+  .hero-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(70px, 14vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-badge span { color: var(--sky); }
+  .hero-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    background: var(--blue);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -8px;
+  }
+
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(13px, 2.5vw, 17px);
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-top: 12px;
+    animation: fadeUp 1s .2s ease both;
+    z-index: 2;
+  }
+
+  /* ABOUT CARD */
+  .about {
+    position: relative;
+    z-index: 2;
+    background: var(--white);
+    color: var(--dark);
+    border-radius: 28px 28px 0 0;
+    margin-top: 48px;
+    padding: 52px clamp(20px, 6vw, 80px) 60px;
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px 60px;
+    align-items: start;
+  }
+
+  .about h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 88px);
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  .about h1 span { color: var(--blue); }
+
+  .role-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .divider {
+    width: 48px; height: 3px;
+    background: var(--blue);
+    border-radius: 2px;
+    margin: 16px 0 20px;
+  }
+
+  .about p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #333;
+    max-width: 480px;
+  }
+
+  /* Avatar */
+  .avatar-col { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .avatar-ring {
+    width: 170px; height: 170px;
+    border-radius: 50%;
+    border: 4px solid var(--blue);
+    overflow: hidden;
+    background: linear-gradient(135deg, #c8dff5, #f5dde0);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .avatar-emoji { font-size: 80px; }
+
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .contact-list .icon {
+    width: 30px; height: 30px;
+    background: var(--soft);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* SKILLS & EDUCATION ROW */
+  .skills-edu {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .pill {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 100px;
+    background: var(--soft);
+    color: var(--navy);
+    border: 1.5px solid rgba(26,86,219,0.15);
+    transition: all .25s;
+    cursor: default;
+  }
+  .pill:hover { background: var(--blue); color: #fff; transform: translateY(-2px); }
+
+  .edu-item { margin-bottom: 14px; }
+  .edu-year {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .edu-name { font-size: 14px; color: #333; margin-top: 2px; }
+
+  /* SOFTWARES */
+  .softwares {
+    max-width: 1100px; margin: 40px auto 0;
+  }
+  .sw-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; }
+  .sw-card {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 16px;
+    padding: 18px 24px;
+    min-width: 100px;
+    transition: transform .3s, box-shadow .3s;
+    cursor: default;
+  }
+  .sw-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,86,219,0.3); }
+  .sw-icon { font-size: 36px; }
+  .sw-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+  .sw-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  /* ── VIDEO TEMPLATES SECTION ── */
+  .video-section {
+    padding: 80px clamp(20px, 6vw, 80px);
+    background: var(--dark);
+  }
+
+  .section-header {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .section-header-text h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 7vw, 72px);
+    color: var(--white);
+    line-height: 1;
+  }
+  .section-header-text p {
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+
+  .ratio-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+  .badge-wide { background: rgba(26,86,219,0.25); color: var(--sky); border: 1px solid rgba(79,163,224,0.3); }
+  .badge-tall { background: rgba(255,94,94,0.2); color: #ff9090; border: 1px solid rgba(255,94,94,0.3); }
+
+  /* Template Grid */
+  .templates-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* 16:9 wide cards – span 6 cols each */
+  .tpl-wide { grid-column: span 6; }
+  /* 9:16 tall cards */
+  .tpl-tall-a { grid-column: span 4; }
+  .tpl-tall-b { grid-column: span 4; }
+  .tpl-tall-c { grid-column: span 4; }
+
+  .video-card {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: #111827;
+    transition: transform .35s cubic-bezier(.25,.46,.45,.94), box-shadow .35s;
+  }
+  .video-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 32px 64px rgba(0,0,0,0.5); }
+
+  .video-frame-wide {
+    width: 100%;
+    aspect-ratio: 16/9;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .video-frame-tall {
+    width: 100%;
+    aspect-ratio: 9/16;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+  .video-frame-wide video,
+  .video-frame-tall video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #000;
+    border-radius: 0;
+  }
+
+  /* Template background art */
+  .tpl-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Template 1 – 16:9 – Ocean / Blue gradient */
+  .tpl1-bg {
+    background: linear-gradient(135deg, #0a1628 0%, #0d3060 40%, #1a56db 100%);
+  }
+  .tpl1-bg::before {
+    content: '';
+    position: absolute;
+    bottom: -20%; left: -10%;
+    width: 70%; height: 80%;
+    background: radial-gradient(ellipse, rgba(79,163,224,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .tpl1-bg::after {
+    content: '';
+    position: absolute;
+    top: -10%; right: -10%;
+    width: 50%; height: 60%;
+    background: radial-gradient(ellipse, rgba(255,94,94,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Template 2 – 16:9 – Dark editorial */
+  .tpl2-bg {
+    background: linear-gradient(120deg, #0f0f0f 0%, #1a0a00 60%, #2d1500 100%);
+  }
+  .tpl2-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(255,150,50,0.03) 0px,
+      rgba(255,150,50,0.03) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  }
+
+  /* Template 3 – 9:16 – Soft pink */
+  .tpl3-bg {
+    background: linear-gradient(160deg, #fde8f0 0%, #fcd4e4 50%, #f5a8ca 100%);
+  }
+  .tpl3-bg::before {
+    content: '';
+    position: absolute;
+    top: 10%; left: 50%;
+    transform: translateX(-50%);
+    width: 180%; height: 60%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.6) 0%, transparent 70%);
+  }
+
+  /* Template 4 – 9:16 – Neon green dark */
+  .tpl4-bg {
+    background: linear-gradient(160deg, #020c04 0%, #042010 50%, #061a0a 100%);
+  }
+  .tpl4-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 20%; left: 50%;
+    transform: translateX(-50%);
+    width: 200%; height: 60%;
+    background: radial-gradient(ellipse, rgba(0,255,80,0.08) 0%, transparent 70%);
+  }
+
+  /* Template 5 – 9:16 – Purple luxe */
+  .tpl5-bg {
+    background: linear-gradient(160deg, #0d0010 0%, #200040 50%, #0d0010 100%);
+  }
+  .tpl5-bg::before {
+    content: '';
+    position: absolute;
+    top: 15%; left: 50%;
+    transform: translateX(-50%);
+    width: 160%; height: 70%;
+    background: radial-gradient(ellipse, rgba(140,60,255,0.25) 0%, transparent 70%);
+  }
+
+  /* Play button overlay */
+  .play-btn {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .video-card:hover .play-btn { opacity: 1; }
+  .play-circle {
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .play-triangle {
+    width: 0; height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid rgba(255,255,255,0.9);
+    margin-left: 4px;
+  }
+
+  /* Card overlays – decorative elements */
+  .card-overlay {
+    position: absolute; inset: 0; z-index: 3;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%);
+  }
+  .card-title-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.75);
+  }
+  .card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 2px;
+  }
+
+  /* Decorative SVG shapes inside templates */
+  .tpl-art {
+    position: absolute; inset: 0; z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Card info below */
+  .card-info {
+    padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-info-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+  }
+  .card-info-ratio {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #060c1a;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer p {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 2px;
+  }
+  footer a { color: var(--sky); text-decoration: none; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .avatar-col { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .skills-edu { grid-template-columns: 1fr; }
+    .templates-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .tpl-wide, .tpl-tall-a, .tpl-tall-b, .tpl-tall-c { grid-column: span 2; }
+    .tpl-tall-a, .tpl-tall-b { grid-column: span 1; }
+    .tpl-tall-c { grid-column: span 2; }
+  }
+  @media (max-width: 600px) {
+    .templates-grid { grid-template-columns: 1fr; }
+    .tpl-wide, .tpl-tall-a, .tpl-tall-b, .tpl-tall-c { grid-column: span 1; }
+    .about { padding: 36px 20px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="bird"></div>
+  <div class="bird"></div>
+  <div class="bird"></div>
+  <div class="bird"></div>
+
+  <div class="hero-badge">
+    PORT<br><span>FOLIO</span><span class="hero-year">2025</span>
+  </div>
+  <div class="hero-sub">Graphic Designer &amp; Video Editor</div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about">
+  <div class="about-inner">
+    <div>
+      <h1>RAJ <span>SINGH</span></h1>
+      <p class="role-tag">Graphic Designer &amp; Video Editor</p>
+      <div class="divider"></div>
+      <p>I'm a creative professional specializing in graphic design and video editing, focused on turning ideas into visually engaging experiences. From social media creatives to high-impact video content, I aim to blend storytelling with design to create work that not only looks good but also delivers results.</p>
+
+      <div class="skills-edu reveal">
+        <div>
+          <p class="section-title">Skills</p>
+          <div class="divider"></div>
+          <div class="skill-pills">
+            <span class="pill">Graphic Design</span>
+            <span class="pill">Video Editing</span>
+            <span class="pill">Social Media Creatives</span>
+            <span class="pill">Visual Storytelling</span>
+            <span class="pill">Brand Consistency</span>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <p class="section-title">Education</p>
+          <div class="divider"></div>
+          <div class="edu-item">
+            <div class="edu-year">2026</div>
+            <div class="edu-name">Senior Secondary – UP Board Class X</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2024</div>
+            <div class="edu-name">Secondary – UP Board Class X</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="softwares reveal" style="margin-top:36px;">
+        <p class="section-title">Softwares</p>
+        <div class="divider"></div>
+        <div class="sw-grid">
+          <div class="sw-card">
+            <img src="aftereffects.jpg.jpg" alt="After Effects" class="sw-img">
+            <div class="sw-label">After Effects</div>
+          </div>
+          <div class="sw-card">
+            <img src="davinci.jpg.jpg" alt="DaVinci Resolve" class="sw-img">
+            <div class="sw-label">DaVinci Resolve</div>
+          </div>
+          <div class="sw-card">
+            <img src="photoshop.jpg.jpg" alt="Photoshop" class="sw-img">
+            <div class="sw-label">Photoshop</div>
+          </div>
+          <div class="sw-card">
+            <img src="figma.jpg.jpg" alt="Figma" class="sw-img">
+            <div class="sw-label">Figma</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="avatar-col">
+      <div class="avatar-ring">
+        <img src="profile.png" alt="Raj Singh" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+      </div>
+      <ul class="contact-list">
+        <li><div class="icon">✉️</div> contact2rajs1ng@gmail.com</li>
+        <li><div class="icon">📞</div> +91 8090362240</li>
+        <li><div class="icon">🔗</div> <a href="https://linktr.ee/contact2rajs1ng" target="_blank" style="color:var(--blue);text-decoration:none;">linktr.ee/contact2rajs1ng</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO TEMPLATES ── -->
+<section class="video-section">
+  <div class="section-header reveal">
+    <div class="section-header-text">
+      <h2>MY WORK</h2>
+    </div>
+  </div>
+
+  <div class="templates-grid">
+
+    <!-- TEMPLATE 1 – 16:9 vid1 -->
+    <div class="tpl-wide video-card reveal">
+      <span class="ratio-badge badge-wide" style="position:absolute;top:12px;left:12px;z-index:10;">16:9 · Wide</span>
+      <div class="video-frame-wide">
+        <video controls preload="metadata" playsinline>
+          <source src="Videos/vid1.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="card-info">
+        <span class="card-info-name">VIDEO 01 — Widescreen</span>
+        <span class="card-info-ratio">16 : 9</span>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 2 – 16:9 vid2 -->
+    <div class="tpl-wide video-card reveal">
+      <span class="ratio-badge badge-wide" style="position:absolute;top:12px;left:12px;z-index:10;">16:9 · Wide</span>
+      <div class="video-frame-wide">
+        <video controls preload="metadata" playsinline>
+          <source src="Videos/vid2.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="card-info">
+        <span class="card-info-name">VIDEO 02 — Widescreen</span>
+        <span class="card-info-ratio">16 : 9</span>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 3 – 9:16 reel1 -->
+    <div class="tpl-tall-a video-card reveal">
+      <span class="ratio-badge badge-tall" style="position:absolute;top:12px;left:12px;z-index:10;">9:16 · Vertical</span>
+      <div class="video-frame-tall">
+        <video controls preload="metadata" playsinline>
+          <source src="Videos/reel1.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="card-info">
+        <span class="card-info-name">VIDEO 03 — Reel</span>
+        <span class="card-info-ratio">9 : 16</span>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 4 – 9:16 reel2 -->
+    <div class="tpl-tall-b video-card reveal">
+      <span class="ratio-badge badge-tall" style="position:absolute;top:12px;left:12px;z-index:10;">9:16 · Vertical</span>
+      <div class="video-frame-tall">
+        <video controls preload="metadata" playsinline>
+          <source src="Videos/reel2.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="card-info">
+        <span class="card-info-name">VIDEO 04 — Reel</span>
+        <span class="card-info-ratio">9 : 16</span>
+      </div>
+    </div>
+
+    <!-- TEMPLATE 5 – 9:16 reel3 -->
+    <div class="tpl-tall-c video-card reveal">
+      <span class="ratio-badge badge-tall" style="position:absolute;top:12px;left:12px;z-index:10;">9:16 · Vertical</span>
+      <div class="video-frame-tall">
+        <video controls preload="metadata" playsinline>
+          <source src="Videos/reel3.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="card-info">
+        <span class="card-info-name">VIDEO 05 — Reel</span>
+        <span class="card-info-ratio">9 : 16</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>RAJ SINGH · <a href="mailto:contact2rajs1ng@gmail.com">contact2rajs1ng@gmail.com</a> · <a href="https://linktr.ee/contact2rajs1ng" target="_blank">linktr.ee/contact2rajs1ng</a></p>
+  <p style="margin-top:8px;">© 2025 All Rights Reserved</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
